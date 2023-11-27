@@ -11,6 +11,9 @@ str_split(in_str, splt = " ")
 
 \item{splt}{Character to split at. By default, split at spaces.}
 }
+\value{
+Returns string vector or character vector from strings.
+}
 \description{
 `str_split` is an extension of `base::strsplit` but returns a vector instead
 of a list. This function also removes blank characters and spaces.

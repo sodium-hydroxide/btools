@@ -6,6 +6,7 @@
 #'
 #' @param in_str Input string to be split
 #' @param splt Character to split at. By default, split at spaces.
+#' @return Returns string vector or character vector from strings.
 #' @export
 #'
 #' @examples
