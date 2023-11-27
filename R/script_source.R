@@ -16,6 +16,7 @@
 script_source <- function(..., directory = "R/", extension = ".R"){
 
   x <-c(...)
+  x <- paste(directory, x, extension, sep = "")
 
   for (i in 1:length(x)) {# loop over elements of list
     source(x[i])
