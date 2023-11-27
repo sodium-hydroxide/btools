@@ -2,11 +2,10 @@ Package: btools
 Type: Package
 Title: R Tools for Data Processing
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Noah Jeffrey Blair
+Maintainer: Noah Jeffrey Blair <noahjblair@outlook.com>
+Description: Collection of commonly used functions for parsing strings and processing data.
+License: Apache License (>= 2)
 Encoding: UTF-8
 LazyData: true
 Imports: Rcpp (>= 1.0.11)
