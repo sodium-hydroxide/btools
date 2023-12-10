@@ -1,8 +1,8 @@
 #' Split a string into string vector
 #'
 #' @description
-#' `str_split` is an extension of `base::strsplit` but returns a vector instead
-#' of a list. This function also removes blank characters and spaces.
+#' `stringsplit` is an extension of `base::strsplit` but returns a vector
+#' instead of a list. This function also removes blank characters and spaces.
 #'
 #' @param in_str Input string to be split
 #' @param splt Character to split at. By default, split at spaces.
@@ -17,7 +17,7 @@
 #' ## c("H", "e", "l", "l", "o", "W", "o", "r", "l", "d")
 
 #------------------------------------------------------------------------------#
-str_split <- function(in_str, splt = " ") {
+stringsplit <- function(in_str, splt = " ") {
   in_str <- strsplit(in_str, split = splt)[[1]]
 
   in_str <- in_str[in_str != ""]
