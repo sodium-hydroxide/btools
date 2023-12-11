@@ -1,12 +1,13 @@
 #' Calculate bin number for ggplot2
 #'
 #' @param data_vector Column of dataframe being plotted
-#' @param method `c("fd")`
+#' @param method `c("fd")` String indicating method to use. Currently
+#'  only the Freedman-Diaconis rule is implemented
 #'
-#' @return
+#' @return number_bins, integer containing the ideal number of bins
+#'  for histogram
 #' @export
 #'
-#' @examples
 bin_number <- function(data_vector, method = "fd") {
     if (method == "fd") {
         bin_width <- 2 * IQR(data_vector) / (length(data_vector) ^ (1 / 3))
@@ -15,6 +16,6 @@ bin_number <- function(data_vector, method = "fd") {
         return(number_bins)
     }
     else {
-        return("Error! Incorrect method provided.")
+        stop("Error! Incorrect method provided.")
     }
 }
