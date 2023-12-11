@@ -6,8 +6,8 @@
 #'
 #' @param ... Strings corresponding to names of packages
 #' @param quiet Boolean, defaults to TRUE. If true, no warnings or messages
-#'    (including package start-up messages) will be displayed. If false, these
-#'    warnings will be displayed.
+#'        (including package start-up messages) will be displayed. If false, these
+#'        warnings will be displayed.
 #' @export
 #'
 #' @examples
@@ -16,21 +16,21 @@
 #------------------------------------------------------------------------------#
 #
 package_load <- function(..., quiet = TRUE) {
-  x <- c(...)
-  for (pkg in x) {
-    # Install package if it is not already installed
-    if (!pkg %in% installed.packages()) {
-      install.packages(pkg)
+    x <- c(...)
+    for (pkg in x) {
+        # Install package if it is not already installed
+        if (!pkg %in% installed.packages()) {
+            install.packages(pkg)
+        }
+        if (quiet) {
+            # Load package without printing output
+            library(pkg, character.only = TRUE) |>
+                suppressPackageStartupMessages() |>
+                suppressMessages() |>
+                suppressWarnings()
+        } else {
+            # Load package
+            library(pkg, character.only = TRUE)
+        }
     }
-    if (quiet) {
-      # Load package without printing output
-      library(pkg, character.only = TRUE) |>
-        suppressPackageStartupMessages() |>
-        suppressMessages() |>
-        suppressWarnings()
-    } else {
-      # Load package
-      library(pkg, character.only = TRUE)
-    }
-  }
 }

@@ -13,12 +13,15 @@
 #' ## Loads the functions "R/function1.R" and "R/function2.R"
 #'
 #'
-script_source <- function(..., directory = "R/", extension = ".R"){
+script_source <- function(
+        ...,
+        directory = "R/",
+        extension = ".R"){
 
-  x <-c(...)
-  x <- paste(directory, x, extension, sep = "")
+    x <-c(...)
+    x <- paste(directory, x, extension, sep = "")
 
-  for (i in 1:length(x)) {# loop over elements of list
-    source(x[i])
-  }
+    for (i in 1:length(x)) {# loop over elements of list
+      source(x[i])
+    }
 }

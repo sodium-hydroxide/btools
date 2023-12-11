@@ -8,6 +8,11 @@ Description: Collection of commonly used functions for parsing strings and proce
 License: Apache License (>= 2)
 Encoding: UTF-8
 LazyData: true
-Imports: Rcpp (>= 1.0.11)
+Imports: 
+    dplyr,
+    Rcpp (>= 1.0.11)
 LinkingTo: Rcpp
 RoxygenNote: 7.2.3
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
