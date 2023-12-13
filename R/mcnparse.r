@@ -208,7 +208,6 @@ mcnparse_one <- function(
 
     # Pull subsequent tallies and append to dataframe
     for (i in 2:nrow(tally_info)) {
-        print(i)
         bin_start_i <- tally_info$index[i] + tally_info$values[i]
         bin_end_i <- bin_start_i + tally_info$numBin[i] - 1
         tally_lines_i <- mcnp_output[bin_start_i:bin_end_i]
