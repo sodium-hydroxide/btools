@@ -102,11 +102,11 @@ mcnparse_pull_tally_data <- function(in_tally_lines, tally_name) {
     }
 
     return(
-    data.frame(
-        bin_mev = energy_vect,
-        value = tally_vect,
-        re = rsd_vect) |>
-        dplyr::mutate(tally = tally_name)
+        data.frame(
+            bin_mev = energy_vect,
+            value = tally_vect,
+            re = rsd_vect) |>
+            dplyr::mutate(tally = tally_name)
     )
 
 }
@@ -208,13 +208,14 @@ mcnparse_one <- function(
 
     # Pull subsequent tallies and append to dataframe
     for (i in 2:nrow(tally_info)) {
-        bin_start_i <- tally_info$index[1] + tally_info$values[i]
-        bin_end_i <- bin_start_i + tally_info$numBin[i]
+        print(i)
+        bin_start_i <- tally_info$index[i] + tally_info$values[i]
+        bin_end_i <- bin_start_i + tally_info$numBin[i] - 1
         tally_lines_i <- mcnp_output[bin_start_i:bin_end_i]
         tally_data <- rbind(tally_data, mcnparse_pull_tally_data(
             tally_lines_i,
             tally_info$name[i]
-            )
+        )
         )
     }
 
@@ -280,4 +281,3 @@ mcnparse <- function(
         ))
     }
 }
-
