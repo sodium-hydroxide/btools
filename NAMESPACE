@@ -3,6 +3,7 @@
 export(bin_number)
 export(inverson)
 export(iverson)
+export(jags_run)
 export(mcnparse)
 export(mcnparse_identify_tally)
 export(mcnparse_one)

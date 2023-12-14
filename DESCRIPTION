@@ -1,7 +1,7 @@
 Package: btools
 Type: Package
 Title: R Tools for Data Processing
-Version: 0.1.1
+Version: 0.1.2
 Author: Noah Jeffrey Blair
 Maintainer: Noah Jeffrey Blair <noahjblair@outlook.com>
 Description: Collection of commonly used functions for parsing strings and processing data.
@@ -9,6 +9,8 @@ License: Apache License (>= 2)
 Encoding: UTF-8
 LazyData: true
 Imports: 
+    devtools,
+    rjags,
     dplyr,
     Rcpp (>= 1.0.11)
 LinkingTo: Rcpp
