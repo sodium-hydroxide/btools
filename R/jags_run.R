@@ -4,7 +4,6 @@
 #' This function allows for interfacing with the JAGS (just another gibbs
 #' sampler) for Markov Chain Monte Carlo sampling of posterior distributions
 #'
-#'
 #' @param model String vector containing the model parameters
 #' @param data List, data for likelihood and prior distribution
 #' @param variables String vector, variables to keep track of
@@ -12,7 +11,7 @@
 #' @param steps Number of sampling steps to perform
 #' @param thin Thinning interval
 #'
-#' @return modeul_output Named list containing arrays of sampled posterior distributions
+#' @return model_output Named list containing arrays of sampled posterior distributions
 #' @export
 #'
 jags_run <- function(
@@ -24,11 +23,20 @@ jags_run <- function(
         thin = 1,
         directory = "models/jags/") {
 
-    file_name <- paste(
+    model_name <- paste(
         directory,
         "model-",
         strftime(Sys.time(),"%Y%m%d-%H%M%S"),
+        sep = "")
+
+    file_name <- paste(
+        model_name,
         ".temp",
+        sep = "")
+
+    model_out <- paste(
+        model_name,
+        ".rda",
         sep = "")
 
     file_conn <- file(file_name)
@@ -66,6 +74,8 @@ jags_run <- function(
 
         model_output[[name]] <- current_array
     }
+
+    save(model_output, file = model_out)
 
     return(model_output)
 }
