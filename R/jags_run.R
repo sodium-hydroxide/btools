@@ -4,6 +4,7 @@
 #' This function allows for interfacing with the JAGS (just another gibbs
 #' sampler) for Markov Chain Monte Carlo sampling of posterior distributions
 #'
+#' @param ... Collection of strings containing the JAGS model
 #' @param model String vector containing the model parameters
 #' @param data List, data for likelihood and prior distribution
 #' @param variables String vector, variables to keep track of
@@ -15,13 +16,22 @@
 #' @export
 #'
 jags_run <- function(
-        model,
+        ...,
+        model = NULL,
         data = list(),
         variables = c(),
         burn_in = 1,
         steps = 1,
         thin = 1,
         directory = "models/jags/") {
+
+    if (is.null(model)){
+        model <- c(...)
+    }
+
+    if (is.null(model)){
+        stop("Error\nModel input must be specified")
+    }
 
     model_name <- paste(
         directory,

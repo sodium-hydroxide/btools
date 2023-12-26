@@ -5,7 +5,8 @@
 \title{Interface with JAGS}
 \usage{
 jags_run(
-  model,
+  ...,
+  model = NULL,
   data = list(),
   variables = c(),
   burn_in = 1,
@@ -15,6 +16,8 @@ jags_run(
 )
 }
 \arguments{
+\item{...}{Collection of strings containing the JAGS model}
+
 \item{model}{String vector containing the model parameters}
 
 \item{data}{List, data for likelihood and prior distribution}
@@ -28,7 +31,7 @@ jags_run(
 \item{thin}{Thinning interval}
 }
 \value{
-modeul_output Named list containing arrays of sampled posterior distributions
+model_output Named list containing arrays of sampled posterior distributions
 }
 \description{
 This function allows for interfacing with the JAGS (just another gibbs

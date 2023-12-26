@@ -2,6 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+*.code-workspace
+*.Rproj
 src/*.o
 src/*.so
 src/*.dll

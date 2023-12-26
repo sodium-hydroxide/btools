@@ -1,3 +1,4 @@
 ^.*\.Rproj$
+^.*\.code-workspace$
 ^\.Rproj\.user$
 ^LICENSE\.md$
