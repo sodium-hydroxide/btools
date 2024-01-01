@@ -2,9 +2,14 @@
 % Please edit documentation in R/mcnparse.r
 \name{mcnparse}
 \alias{mcnparse}
-\title{Title}
+\title{Batch Parse MCNP Files}
 \usage{
-mcnparse(deck_list, directory = "", extension = ".mcnpout", write_files = TRUE)
+mcnparse(
+  deck_list,
+  directory = "",
+  extension = ".mcnpout",
+  write_files = FALSE
+)
 }
 \arguments{
 \item{deck_list}{String vector containing the file_names (without extension) to be used}
@@ -16,10 +21,18 @@ mcnparse(deck_list, directory = "", extension = ".mcnpout", write_files = TRUE)
 \item{write_files}{Boolean. When set to true, the data for the runs will be saved to "mcnpData.csv" and the statistical checks will be saved to "statisticalChecks.csv".}
 }
 \value{
-named list with element data: dataframe containing the data check: dataframe containing the statistical checks
+named list with element data: dataframe containing the data, dataframe containing the statistical checks.
 }
 \description{
-The data for the mcnp runs contains four columns:
+The data for the mcnp runs contains the following columns:
+- bin_mev; the energy of the bin in MeV
+- value; the value of the tally
+- re; the relative uncertainty of the value
+- tally; the tally number used in the input
+- run_id; the file_name for the given run
+}
+\details{
+The function contains four subroutines which are used when parsing the files and combining the data into a single dataframe.
 }
 \examples{
 
