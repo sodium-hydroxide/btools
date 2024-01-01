@@ -15,6 +15,9 @@
 #' @return model_output Named list containing arrays of sampled posterior distributions
 #' @export
 #'
+
+#-----------------------------------------------------------------------------#
+
 jags_run <- function(
         ...,
         model = NULL,

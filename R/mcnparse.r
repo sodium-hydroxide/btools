@@ -7,6 +7,9 @@
 #' @return Dataframe containing each tally identifier, type, and location of the tally, the values, and number of energy bins
 #' @export
 #'
+
+#-----------------------------------------------------------------------------#
+
 mcnparse_identify_tally <- function(mcnp_output) {
     # Initialize dataframe
     tally_info <- data.frame(
@@ -82,6 +85,9 @@ mcnparse_identify_tally <- function(mcnp_output) {
 #'  error, and tally name
 #' @export
 #'
+
+#-----------------------------------------------------------------------------#
+
 mcnparse_pull_tally_data <- function(in_tally_lines, tally_name) {
 
     num_lines <- length(in_tally_lines)
@@ -122,6 +128,9 @@ mcnparse_pull_tally_data <- function(in_tally_lines, tally_name) {
 #' @return Dataframe containing the results of MCNP statistical checks for each tally
 #' @export
 #'
+
+#-----------------------------------------------------------------------------#
+
 mcnparse_stat_results <- function(mcnp_output) {
 
     # Find index where tally summaries occur
@@ -181,6 +190,9 @@ mcnparse_stat_results <- function(mcnp_output) {
 #' @return Returns dataframe containing results of individual run
 #' @export
 #'
+
+#-----------------------------------------------------------------------------#
+
 mcnparse_one <- function(
         file_name,
         directory = "",

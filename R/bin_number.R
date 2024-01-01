@@ -8,6 +8,9 @@
 #'  for histogram
 #' @export
 #'
+
+#-----------------------------------------------------------------------------#
+
 bin_number <- function(data_vector, method = "fd") {
     if (method == "fd") {
         bin_width <- 2 * IQR(data_vector) / (length(data_vector) ^ (1 / 3))

@@ -12,7 +12,9 @@
 #' `script_source("function1", "function2")`
 #' ## Loads the functions "R/function1.R" and "R/function2.R"
 #'
-#'
+
+#-----------------------------------------------------------------------------#
+
 script_source <- function(
         ...,
         directory = "R/",
