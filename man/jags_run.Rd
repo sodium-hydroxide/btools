@@ -12,7 +12,8 @@ jags_run(
   burn_in = 1,
   steps = 1,
   thin = 1,
-  directory = "models/jags/"
+  directory = "models/jags/",
+  name = ""
 )
 }
 \arguments{
@@ -29,9 +30,10 @@ jags_run(
 \item{steps}{Number of sampling steps to perform}
 
 \item{thin}{Thinning interval}
-}
-\value{
-model_output Named list containing arrays of sampled posterior distributions
+
+\item{directory}{String, directory to save model input and output to}
+
+\item{name}{String, identifier for model}
 }
 \description{
 This function allows for interfacing with the JAGS (just another gibbs

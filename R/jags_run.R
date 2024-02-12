@@ -11,8 +11,9 @@
 #' @param burn_in Integer, number of burn in steps to perform
 #' @param steps Number of sampling steps to perform
 #' @param thin Thinning interval
+#' @param directory String, directory to save model input and output to
+#' @param name String, identifier for model
 #'
-#' @return model_output Named list containing arrays of sampled posterior distributions
 #' @export
 #'
 
@@ -26,9 +27,10 @@ jags_run <- function(
         burn_in = 1,
         steps = 1,
         thin = 1,
-        directory = "models/jags/") {
+        directory = "models/jags/",
+        name = "") {
 
-    if (is.null(model)){
+    if (is.null(model)) {
         model <- c(...)
     }
 
@@ -40,17 +42,12 @@ jags_run <- function(
         directory,
         "model-",
         strftime(Sys.time(),"%Y%m%d-%H%M%S"),
+        name,
         sep = "")
 
-    file_name <- paste(
-        model_name,
-        ".temp",
-        sep = "")
+    file_name <- paste(model_name, ".i", sep = "")
 
-    model_out <- paste(
-        model_name,
-        ".rda",
-        sep = "")
+    model_out <- paste(model_name, ".rda", sep = "")
 
     file_conn <- file(file_name)
     writeLines(model, file_conn)
