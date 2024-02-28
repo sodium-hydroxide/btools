@@ -2,6 +2,7 @@
 
 export(all_present)
 export(bin_number)
+export(display_uncertainty)
 export(install_pmder)
 export(inverson)
 export(iverson)
