@@ -1,16 +1,15 @@
 #' Shift columns of dataframe
 #'
-#' @param data
-#' @param column
-#' @param shift_by
-#' @param back
-#' @param order_by
-#' @param fill_with
+#' @param data Dataframe containing column to shift
+#' @param column String, column to shift
+#' @param shift_by Int, number of columns to shift by
+#' @param back Boolean, if true shift back, if false shift forward
+#' @param order_by String, column name to reorder prior to shifting
+#' @param fill_with Float, fill shifted spaces with value
 #'
-#' @return
+#' @return Original dataframe with shifted values
 #' @export
 #'
-#' @examples
 shift <- function(
         data = NULL,
         column = "",
