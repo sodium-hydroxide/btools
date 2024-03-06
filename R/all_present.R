@@ -6,4 +6,8 @@
 #' @return TRUE or FALSE if all values are present in set
 #' @export
 #'
-all_present <- function(..., set = c()){return(FALSE %in% (c(...) %in% set))}
+all_present <- function(
+        ...,
+        set = c()) {
+    return(FALSE %in% (c(...) %in% set))
+}

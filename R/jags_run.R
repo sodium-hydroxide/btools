@@ -34,14 +34,14 @@ jags_run <- function(
         model <- c(...)
     }
 
-    if (is.null(model)){
+    if (is.null(model)) {
         stop("Error\nModel input must be specified")
     }
 
     model_name <- paste(
         directory,
         "model-",
-        strftime(Sys.time(),"%Y%m%d-%H%M%S"),
+        strftime(Sys.time(), "%Y%m%d-%H%M%S"),
         name,
         sep = "")
 
@@ -76,7 +76,7 @@ jags_run <- function(
         current_array <- as.array(jags_draw[[name]][,,1])
         # Transpose 2-D arrays
 
-        if(
+        if (
             length(dim(current_array)) == 2
         ) {
             current_array <- t(current_array)

@@ -30,8 +30,11 @@ display_uncertainty <- function(
     data_temp$.value. <- unlist(data[value])
 
     if (is.null(uncertainty)) {
-        if (is.null(relative_uncertainty)) {stop(
-            "Select column for uncertainty or relative uncertainty.")}
+        if (is.null(relative_uncertainty)) {
+            stop(
+                "Select column for uncertainty or relative uncertainty."
+            )
+        }
         else {
             data_temp$.u_value. <-
                 unlist(data[relative_uncertainty]) * data_temp$.value.
@@ -45,7 +48,8 @@ display_uncertainty <- function(
     # Save the exponents for the uncertainty and value
     data_temp$.u_exp. <- floor(log10(data_temp$.u_value.))
     data_temp$.value_exp. <- floor(log10(data_temp$.value.))
-    # Round the uncertainty to the correct number of sig-figs and display as a string
+    # Round the uncertainty to the correct number of sig-figs
+    # and display as a string
     data_temp$.u_rnd. <- data_temp$.u_value. / (10 ^ data_temp$.u_exp.)
     data_temp$.u_rnd. <- round(data_temp$.u_rnd., digits = sig_fig - 1)
     data_temp$.u_rnd. <- (10 ^ (sig_fig - 1)) * data_temp$.u_rnd.
@@ -63,11 +67,13 @@ display_uncertainty <- function(
             sep = ""
         )
     # Convert the rounded mantissa of the value to a string
-    data_temp$.value_rnd. <- (10 ^ (data_temp$.u_exp. - data_temp$.value_exp.)) *
+    data_temp$.value_rnd. <-
+        (10 ^ (data_temp$.u_exp. - data_temp$.value_exp.)) *
         data_temp$.value_rnd.
     data_temp$.value_rnd. <- as.character(data_temp$.value_rnd.)
     # Add trailing zeros as needed
-    data_temp$.missing_zero. <- nchar(data_temp$.value_string.) == nchar(data_temp$.value_rnd.)
+    data_temp$.missing_zero. <-
+        nchar(data_temp$.value_string.) == nchar(data_temp$.value_rnd.)
 
     while (FALSE %in% data_temp$.missing_zero.) {
         data_temp[data_temp$.missing_zero. == FALSE,]$.value_rnd. <-
@@ -77,23 +83,24 @@ display_uncertainty <- function(
                 sep = ""
             )
 
-        data_temp$.missing_zero. <- nchar(data_temp$.value_string.) == nchar(data_temp$.value_rnd.)
+        data_temp$.missing_zero. <-
+            nchar(data_temp$.value_string.) == nchar(data_temp$.value_rnd.)
     }
 
     # Insert spaces to improve readability
-    if (add_spaces){
-        space_inserts <- max(floor((nchar(data_temp$.value_rnd.) - 2) / 3 ), 1)
+    if (add_spaces) {
+        space_inserts <- max(floor((nchar(data_temp$.value_rnd.) - 2) / 3), 1)
 
         for (i in 1:space_inserts) {
 
             regex_pattern <- paste(
-                '^([[:print:]]{',
-                3*i + 2,
-                '})([[:print:]]+)$', sep = "")
+                "^([[:print:]]{",
+                (3 * i) + 2,
+                "})([[:print:]]+)$", sep = "")
 
             data_temp$.value_rnd. <- gsub(
                 regex_pattern,
-                '\\1 \\2',
+                "\\1 \\2",
                 data_temp$.value_rnd.
             )
         }
@@ -111,7 +118,8 @@ display_uncertainty <- function(
             "}$",
             sep = ""
         )
-    } else{
+    }
+    else {
         data_temp$.value_rnd. <- paste(
             as.character(data_temp$.value_rnd.),
             "(",

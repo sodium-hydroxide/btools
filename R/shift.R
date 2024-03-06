@@ -23,10 +23,15 @@ shift <- function(
     shift_number <- length(shift_by)
 
     if (shift_number != length(back)) {
-        if (length(back) == 1) {back <- rep(back, times = shift_number)}
-        else {stop(
-            "Length of amount to shift by must equal length of back (directions to shift)."
-        )}
+        if (length(back) == 1) {
+            back <- rep(back, times = shift_number)
+        }
+        else {
+            stop(paste(
+                "Length of amount to shift by must equal length of back",
+                "(directions to shift)."
+            ))
+        }
     }
 
     if (is.null(data) || (column == "")) {
@@ -43,7 +48,7 @@ shift <- function(
         if (.back) {
             .data_vector <- c(.data_vector, rep(.fill_with, .shift_by))
 
-            .data_vector <- .data_vector[(.shift_by+1):length(.data_vector)]
+            .data_vector <- .data_vector[(.shift_by + 1):length(.data_vector)]
 
             .data_vector <- list(
                 name = paste(column, .shift_by, "back", sep = "_"),

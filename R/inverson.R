@@ -18,7 +18,7 @@ inverson <- function(...) {
 
     x <- c(...)
 
-    if (length(x[!(x %in% c(0,1))]) != 0) {
+    if (length(x[!(x %in% c(0, 1))]) != 0) {
         stop(paste(
             "Error!",
             "Input must be bitstring",

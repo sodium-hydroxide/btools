@@ -7,6 +7,6 @@
 
 #-----------------------------------------------------------------------------#
 
-update_btools <- function(){
+update_btools <- function() {
     devtools::install_github("sodium-hydroxide/btools", force = TRUE)
 }
