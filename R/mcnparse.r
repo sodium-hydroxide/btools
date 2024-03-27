@@ -19,7 +19,7 @@
 #'
 #' @examples
 #'
-#' `mcnparse(c("run1", "run2", "run3"), directory = "", extension = ".o", write_files = FALSE)`
+#' # mcnparse(c("run1", "run2", "run3"), directory = "", extension = ".o", write_files = FALSE)
 #' ## Will parse the files "run1.o", "run2.o", "run3.o" and will not save the output to excel.
 mcnparse <- function(
         deck_list,
@@ -27,9 +27,13 @@ mcnparse <- function(
         extension = ".mcnpout",
         write_files = FALSE) {
 
+    # Clearing global variables ----
+    index <- NULL
+    values <- NULL
+
     # Subroutines ----
 
-    # Identify tally locations for MCNP output ----
+    # Identify tally locations for MCNP output
     mcnparse_identify_tally <- function(mcnp_output) {
         # Initialize dataframe
         tally_info <- data.frame(
@@ -61,8 +65,14 @@ mcnparse <- function(
 
             tally_info$values[i] <- 6
 
-            if (tally_info$type[i] %in% c("4", "2")) {
+            if (tally_info$type[i] == "4") {
                 tally_info$values[i] <- tally_info$values[i] + 4
+            }
+
+            if (energy_weighted) {
+                tally_info$type[i] <- paste("*F", tally_info$type[i], sep = "")
+            } else {
+                tally_info$type[i] <- paste("F", tally_info$type[i], sep = "")
             }
 
             # Find number of energy bins
@@ -87,19 +97,12 @@ mcnparse <- function(
                 tally_info$numBin[i] <- tally_info$numBin[i] - 4
             }
 
-            if (energy_weighted) {
-                tally_info$type[i] <- paste("*F", tally_info$type[i], sep = "")
-            } else {
-                tally_info$type[i] <- paste("F", tally_info$type[i], sep = "")
-            }
-
         }
 
         return(tally_info)
     }
-    #
 
-    # Pull Tally Location Information ----
+    # Pull Tally Location Information
     mcnparse_pull_tally_data <- function(in_tally_lines, tally_name) {
 
         num_lines <- length(in_tally_lines)
@@ -128,7 +131,7 @@ mcnparse <- function(
 
     }
 
-    # Parse single statistical checks for MCNP output ----
+    # Parse single statistical checks for MCNP output
     mcnparse_stat_results <- function(mcnp_output) {
 
         # Find index where tally summaries occur
@@ -175,7 +178,7 @@ mcnparse <- function(
         return(stat_check)
     }
 
-    # Parse single MCNP output file ----
+    # Parse single MCNP output file
     mcnparse_one <- function(file_name,
                              directory = directory,
                              extension = extension) {
@@ -230,22 +233,27 @@ mcnparse <- function(
     all_data <- results_i$data
     all_stat <- results_i$check
 
-    if (length(deck_list) > 1) {
-        for (i in 2:length(deck_list)) {
-            results_i <- mcnparse_one(deck_list[i], directory, extension)
-            all_data <- rbind(all_data, results_i$data)
-            all_stat <- rbind(all_stat, results_i$check)
-        }
+    for (i in 2:length(deck_list)) {
+        results_i <- mcnparse_one(deck_list[i], directory, extension)
+        all_data <- rbind(all_data, results_i$data)
+        all_stat <- rbind(all_stat, results_i$check)
     }
 
     if (write_files) {
-        write.csv(all_data, file = "mcnpData.csv", row.names = FALSE)
-        write.csv(all_stat, file = "statisticalChecks.csv", row.names = FALSE)
+        utils::write.csv(
+            all_data,
+            file = "mcnpData.csv",
+            row.names = FALSE
+        )
+        utils::write.csv(
+            all_stat,
+            file = "statisticalChecks.csv",
+            row.names = FALSE
+        )
     } else {
         return(list(
             data = all_data,
             check = all_stat
         ))
     }
-
 }

@@ -17,6 +17,6 @@ Return FALSE for 0 and TRUE for 1
 }
 \examples{
 
-`inverson(0, 1, 0, 1)`
+# inverson(0, 1, 0, 1)
 ## c(FALSE, TRUE, FALSE, TRUE)
 }

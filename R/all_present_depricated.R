@@ -11,5 +11,5 @@
 all_present <- function(
     ...,
     set = c()) {
-  stop("")
+  stop("Function is depricated. Use ... %allin% set")
 }

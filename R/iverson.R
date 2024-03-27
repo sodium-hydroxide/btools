@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#' `iverson(TRUE, FALSE, TRUE, FALSE)`
+#' # iverson(TRUE, FALSE, TRUE, FALSE)
 #' ## c(1, 0, 1, 0)
 
 #-----------------------------------------------------------------------------#

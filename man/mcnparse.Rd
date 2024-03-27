@@ -36,6 +36,6 @@ The function contains four subroutines which are used when parsing the files and
 }
 \examples{
 
-`mcnparse(c("run1", "run2", "run3"), directory = "", extension = ".o", write_files = FALSE)`
+# mcnparse(c("run1", "run2", "run3"), directory = "", extension = ".o", write_files = FALSE)
 ## Will parse the files "run1.o", "run2.o", "run3.o" and will not save the output to excel.
 }

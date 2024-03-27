@@ -61,7 +61,7 @@ jags_run <- function(
         jags_model <- rjags::jags.model(file = file_name, data = data)
     }
 
-    update(jags_model, burn_in)
+    stats::update(jags_model, burn_in)
 
     jags_draw <- rjags::jags.samples(
         jags_model,

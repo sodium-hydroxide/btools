@@ -16,6 +16,6 @@ Vector
 Return 0 for FALSE and 1 for TRUE
 }
 \examples{
-`iverson(TRUE, FALSE, TRUE, FALSE)`
+# iverson(TRUE, FALSE, TRUE, FALSE)
 ## c(1, 0, 1, 0)
 }

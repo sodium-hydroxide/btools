@@ -19,8 +19,8 @@ package_load <- function(..., quiet = TRUE) {
     x <- c(...)
     for (pkg in x) {
         # Install package if it is not already installed
-        if (!pkg %in% installed.packages()) {
-            install.packages(pkg)
+        if (!pkg %in% utils::installed.packages()) {
+            utils::install.packages(pkg)
         }
         if (quiet) {
             # Load package without printing output

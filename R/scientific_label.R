@@ -1,6 +1,6 @@
 #' Properly display scientific scales for ggplot
 #'
-#' @param x
+#' @param x None
 #'
 #' @export
 #'

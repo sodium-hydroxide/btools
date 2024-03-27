@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#' `script_source("function1", "function2")`
+#' # script_source("function1", "function2")
 #' ## Loads the functions "R/function1.R" and "R/function2.R"
 #'
 

@@ -7,7 +7,7 @@
 scientific_label(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{None}
 }
 \description{
 Properly display scientific scales for ggplot
