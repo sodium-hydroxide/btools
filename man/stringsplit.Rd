@@ -19,9 +19,9 @@ Returns string vector or character vector from strings.
 instead of a list. This function also removes blank characters and spaces.
 }
 \examples{
-str_split("Hello World")
+# str_split("Hello World")
 ## c("Hello", "World")
 
-str_split("Hello World")
+# str_split("Hello World")
 ## c("H", "e", "l", "l", "o", "W", "o", "r", "l", "d")
 }
